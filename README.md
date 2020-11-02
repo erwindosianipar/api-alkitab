@@ -29,7 +29,7 @@ chapter | Adalah nomor pasal/bab yang ingin ditampilkan dari bagian Alkitab | `i
 
 Method | URL
 -- | --
-GET | [https://api-alkitab.herokuapp.com/v1/Yoh/1](https://api-alkitab.herokuapp.com/v1/Yoh/1)
+GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1)
 
 #### Response
 
@@ -84,7 +84,7 @@ number | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int`
 
 Method | URL
 -- | --
-GET | [https://api-alkitab.herokuapp.com/v1/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/Yoh/1/1)
+GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1)
 
 #### Response
 

@@ -16,9 +16,10 @@ Untuk membaca bagian ayat Alkitab gunakan **passage/{passage}/{chapter}** dengan
 
 #### Base URL
 
-```bash
-https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}
-```
+Version | URL
+-- | --
+v1 | https://api-alkitab.herokuapp.com/v1/passage/{**passage**}/{**chapter**}
+v2 | https://api-alkitab.herokuapp.com/v2/passage/{**passage**}/{**chapter**}
 
 Variable | Keterangan | Tipe data
 -- | -- | --
@@ -27,11 +28,36 @@ chapter | Adalah nomor pasal/bab yang ingin ditampilkan dari bagian Alkitab | `i
 
 #### Example
 
-Method | URL
--- | --
-GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1)
+Version | Method | URL
+-- | -- | --
+v1 | GET | [https://api-alkitab.herokuapp.com/v1/Yoh/1](https://api-alkitab.herokuapp.com/v1/Yoh/1)
+v2 | GET | [https://api-alkitab.herokuapp.com/v2/Yoh/1](https://api-alkitab.herokuapp.com/v2/Yoh/1)
 
-#### Response
+#### Response v2
+
+```json
+{
+    "title": "Yohanes 1:1-51",
+    "book_number": 43,
+    "chapter": 1,
+    "verses": [
+        {
+            "verse": 1,
+            "content": "Pada mulanya adalah Firman; Firman itu bersama-sama dengan Allah dan Firman itu adalah Allah."
+        },
+        {
+            "verse": 2,
+            "content": "Ia pada mulanya bersama-sama dengan Allah."
+        },
+        {
+            "verse": 3,
+            "content": "Segala sesuatu dijadikan oleh Dia dan tanpa Dia tidak ada suatupun yang telah jadi dari segala yang telah dijadikan."
+        },
+    ]
+}
+```
+
+#### Response v1
 
 ```json
 {
@@ -64,29 +90,47 @@ GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alkitab.h
 }
 ```
 
-### Passage, Chapter, and Number
+### Passage, Chapter, and Verse
 
-Untuk membaca satu ayat Alkitab gunakan **passage/{passage}/{chapter}/{number}** dengan mengirim nama Pasal dan nomor bagian dan ayat.
+Untuk membaca satu ayat Alkitab gunakan **passage/{passage}/{chapter}/{verse}** dengan mengirim nama Pasal dan nomor bagian dan ayat.
 
 #### Base URL
 
-```bash
-https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}/{number}
-```
+Version | URL
+-- | --
+v1 | https://api-alkitab.herokuapp.com/v1/passage/{**passage**}/{**chapter**}/{**verse**}
+v2 | https://api-alkitab.herokuapp.com/v2/passage/{**passage**}/{**chapter**}/{**verse**}
 
 Variable | Keterangan | Tipe data
 -- | -- | --
 passage | Rentang ayat yang ingin ditampilkan. Menerima berbagai format dalam bahasa Indonesian dan Inggris (Yohanes, Yoh, John, dll). | `string`
 chapter | Adalah nomor pasal/bab yang ingin ditampilkan dari bagian Alkitab | `int`
-number | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int`
+verse | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int`
 
 #### Example
 
-Method | URL
--- | --
-GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1)
+Version | Method | URL
+-- | -- | --
+v1 | GET | [https://api-alkitab.herokuapp.com/v1/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/Yoh/1/1)
+v2 | GET | [https://api-alkitab.herokuapp.com/v1/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/Yoh/1/1)
 
-#### Response
+#### Response v2
+
+```json
+{
+    "title": "Yohanes 1:1",
+    "book_number": 43,
+    "chapter": 1,
+    "verses": [
+        {
+            "verse": 1,
+            "content": "Pada mulanya adalah Firman; Firman itu bersama-sama dengan Allah dan Firman itu adalah Allah."
+        }
+    ]
+}
+```
+
+#### Response v1
 
 ```json
 {

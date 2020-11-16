@@ -18,8 +18,8 @@ Untuk membaca bagian ayat Alkitab gunakan **passage/{passage}/{chapter}** dengan
 
 Version | URL
 -- | --
-v1 | https://api-alkitab.herokuapp.com/v1/passage/{**passage**}/{**chapter**}
-v2 | https://api-alkitab.herokuapp.com/v2/passage/{**passage**}/{**chapter**}
+v1 | https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}
+v2 | https://api-alkitab.herokuapp.com/v2/passage/{passage}/{chapter}
 
 Variable | Keterangan | Tipe data
 -- | -- | --
@@ -98,8 +98,8 @@ Untuk membaca satu ayat Alkitab gunakan **passage/{passage}/{chapter}/{verse}** 
 
 Version | URL
 -- | --
-v1 | https://api-alkitab.herokuapp.com/v1/passage/{**passage**}/{**chapter**}/{**verse**}
-v2 | https://api-alkitab.herokuapp.com/v2/passage/{**passage**}/{**chapter**}/{**verse**}
+v1 | https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}/{verse}
+v2 | https://api-alkitab.herokuapp.com/v2/passage/{passage}/{chapter}/{verse}
 
 Variable | Keterangan | Tipe data
 -- | -- | --

@@ -2,12 +2,8 @@ name: Build Application
 
 on:
   pull_request:
-    paths-ignore:
-      - "playground-ui/**"
     branches: [master]
   push:
-    paths-ignore:
-      - "playground-ui/**"
     branches: [master]
 
 jobs:

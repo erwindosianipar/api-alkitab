@@ -9,6 +9,7 @@ import (
 
 	"api-alkitab/passage"
 	"api-alkitab/passage/models"
+	"api-alkitab/utils"
 
 	"github.com/sirupsen/logrus"
 )
@@ -26,7 +27,7 @@ func (u *PassageRepositoryImpl) PassageChapter(passage string, chapter int) (*mo
 	logrus.Info(resp.Request.URL.String())
 	if err != nil {
 		logrus.Error("[repository][Passage][Get]", err)
-		return nil, errors.New("error to call api")
+		return nil, errors.New(utils.ErrorCallAPI)
 	}
 	defer resp.Body.Close()
 
@@ -34,53 +35,123 @@ func (u *PassageRepositoryImpl) PassageChapter(passage string, chapter int) (*mo
 		bytes, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			logrus.Error("[repository][Passage][ReadAll]", err)
-			return nil, errors.New("error read response data")
+			return nil, errors.New(utils.ErrorReadResponseData)
 		}
 
 		data := &models.Passage{}
 		err = xml.Unmarshal(bytes, data)
 		if err != nil {
 			logrus.Error("[repository][Passage][Unmarshal]", err)
-			return nil, errors.New("error decode response")
+			return nil, errors.New(utils.ErrorDecodeResponse)
 		}
 
 		return data, nil
 	}
 
 	logrus.Error("[repository][Passage][statusCode]", resp.StatusCode)
-	return nil, errors.New("error something went wrong")
+	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
-func (u *PassageRepositoryImpl) PassageChapterNumber(passage string, chapter int, number int) (*models.Passage, error) {
-	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, number)
+func (u *PassageRepositoryImpl) PassageChapterVerse(passage string, chapter int, verse int) (*models.Passage, error) {
+	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, verse)
 
 	resp, err := http.Get(u.baseURL + params)
 	logrus.Info(resp.Request.URL.String())
 	if err != nil {
-		logrus.Error("[repository][PassageChapterNumber][Get]", err)
-		return nil, errors.New("error to call api")
+		logrus.Error("[repository][PassageChapterVerse][Get]", err)
+		return nil, errors.New(utils.ErrorCallAPI)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusOK {
 		bytes, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			logrus.Error("[repository][PassageChapterNumber][ReadAll]", err)
-			return nil, errors.New("error read response data")
+			logrus.Error("[repository][PassageChapterVerse][ReadAll]", err)
+			return nil, errors.New(utils.ErrorReadResponseData)
 		}
 
 		data := &models.Passage{}
 		err = xml.Unmarshal(bytes, data)
 		if err != nil {
-			logrus.Error("[repository][PassageChapterNumber][Unmarshal]", err)
-			return nil, errors.New("error decode response")
+			logrus.Error("[repository][PassageChapterVerse][Unmarshal]", err)
+			return nil, errors.New(utils.ErrorDecodeResponse)
 		}
 
 		return data, nil
 	}
 
-	logrus.Error("[repository][PassageChapterNumber][statusCode]", resp.StatusCode)
-	return nil, errors.New("error something went wrong")
+	logrus.Error("[repository][PassageChapterVerse][statusCode]", resp.StatusCode)
+	return nil, errors.New(utils.ErrorSomethingWentWrong)
+}
+
+func (u *PassageRepositoryImpl) PassageChapterV2(passage string, chapter int, ver string) (*models.PassageV2, error) {
+	params := fmt.Sprintf("?passage=%s+%v", passage, chapter)
+	if ver != "" {
+		params = fmt.Sprintf("?passage=%s+%v&ver=%s", passage, chapter, ver)
+	}
+
+	resp, err := http.Get(u.baseURL + params)
+	logrus.Info(resp.Request.URL.String())
+	if err != nil {
+		logrus.Error("[repository][PassageChapterV2][Get]", err)
+		return nil, errors.New(utils.ErrorCallAPI)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		bytes, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			logrus.Error("[repository][PassageChapterV2][ReadAll]", err)
+			return nil, errors.New(utils.ErrorReadResponseData)
+		}
+
+		data := &models.PassageV2{}
+		err = xml.Unmarshal(bytes, data)
+		if err != nil {
+			logrus.Error("[repository][PassageChapterV2][Unmarshal]", err)
+			return nil, errors.New(utils.ErrorDecodeResponse)
+		}
+
+		return data, nil
+	}
+
+	logrus.Error("[repository][PassageChapterV2][statusCode]", resp.StatusCode)
+	return nil, errors.New(utils.ErrorSomethingWentWrong)
+}
+
+func (u *PassageRepositoryImpl) PassageChapterVerseV2(passage string, chapter int, verse int, ver string) (*models.PassageV2, error) {
+	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, verse)
+	if ver != "" {
+		params = fmt.Sprintf("?passage=%s+%v:%v&ver=%s", passage, chapter, verse, ver)
+	}
+
+	resp, err := http.Get(u.baseURL + params)
+	logrus.Info(resp.Request.URL.String())
+	if err != nil {
+		logrus.Error("[repository][PassageChapterVerseV2][Get]", err)
+		return nil, errors.New(utils.ErrorCallAPI)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		bytes, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			logrus.Error("[repository][PassageChapterVerseV2][ReadAll]", err)
+			return nil, errors.New(utils.ErrorReadResponseData)
+		}
+
+		data := &models.PassageV2{}
+		err = xml.Unmarshal(bytes, data)
+		if err != nil {
+			logrus.Error("[repository][PassageChapterVerseV2][Unmarshal]", err)
+			return nil, errors.New(utils.ErrorDecodeResponse)
+		}
+
+		return data, nil
+	}
+
+	logrus.Error("[repository][PassageChapterVerseV2][statusCode]", resp.StatusCode)
+	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
 func CreatePassageRepository(baseURL string) passage.PassageRepository {

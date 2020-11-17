@@ -16,10 +16,12 @@ import (
 
 var _ passage.PassageRepository = &PassageRepositoryImpl{}
 
+// PassageRepositoryImpl to ensure repository implemented
 type PassageRepositoryImpl struct {
 	baseURL string
 }
 
+// PassageChapter exported to fetch data passage and chapter
 func (u *PassageRepositoryImpl) PassageChapter(passage string, chapter int) (*models.Passage, error) {
 	params := fmt.Sprintf("?passage=%s+%v", passage, chapter)
 
@@ -52,6 +54,7 @@ func (u *PassageRepositoryImpl) PassageChapter(passage string, chapter int) (*mo
 	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
+// PassageChapterVerse exported to fetch data passage chapter and verse
 func (u *PassageRepositoryImpl) PassageChapterVerse(passage string, chapter int, verse int) (*models.Passage, error) {
 	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, verse)
 
@@ -84,6 +87,7 @@ func (u *PassageRepositoryImpl) PassageChapterVerse(passage string, chapter int,
 	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
+// PassageChapterV2 exported to fetch data passage and chapter for v2
 func (u *PassageRepositoryImpl) PassageChapterV2(passage string, chapter int, ver string) (*models.PassageV2, error) {
 	params := fmt.Sprintf("?passage=%s+%v", passage, chapter)
 	if ver != "" {
@@ -119,6 +123,7 @@ func (u *PassageRepositoryImpl) PassageChapterV2(passage string, chapter int, ve
 	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
+// PassageChapterVerseV2 exported to fetch data passage chapter and verse for v2
 func (u *PassageRepositoryImpl) PassageChapterVerseV2(passage string, chapter int, verse int, ver string) (*models.PassageV2, error) {
 	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, verse)
 	if ver != "" {
@@ -154,6 +159,7 @@ func (u *PassageRepositoryImpl) PassageChapterVerseV2(passage string, chapter in
 	return nil, errors.New(utils.ErrorSomethingWentWrong)
 }
 
+// CreatePassageRepository exported to initialize passage repository
 func CreatePassageRepository(baseURL string) passage.PassageRepository {
 	return &PassageRepositoryImpl{baseURL}
 }

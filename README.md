@@ -1,37 +1,47 @@
 # API Alkitab Indonesia
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/erwindosianipar/api-alkitab/Build%20Application)
+![Github Heroku deployed](https://heroku-badge.herokuapp.com/?app=api-alkitab&style=flat&svg=1)
+![GitHub](https://img.shields.io/github/license/erwindosianipar/api-alkitab)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/erwindosianipar/api-alkitab)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/erwindosianipar/api-alkitab)
+![GitHub forks](https://img.shields.io/github/forks/erwindosianipar/api-alkitab)
+![GitHub last commit](https://img.shields.io/github/last-commit/erwindosianipar/api-alkitab)
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m786403864-a6328db4aa0b4270dadbe851)
+
 ## Demo: [https://api-alkitab.herokuapp.com](https://api-alkitab.herokuapp.com)
 
 API Alkitab Indonesia adalah sebuah *third-party backend* Alkitab yang sumber bacaannya berasal dari [sabda.org](https://sabda.org).
 
-[sabda.org](https://sabda.org) adalah sebuah Yayasan Kristen non-profit, non-komersial yang bergerak dalam bidang pelayanan media komputer dan internet di Indonesia.
+[sabda.org](https://sabda.org) adalah sebuah Yayasan Kristen non-profit dan non-komersial yang bergerak dalam bidang pelayanan media komputer dan internet di Indonesia.
 
-## Penggunaan
+## Dokumentasi
 
-Saat ini (24 Oktober 2020) API masih mempunyai dua fitur utama untuk penampilan pasal dan ayat Alkitab.
+Versi saat (**v2.0.0**) masih mempunyai dua fitur utama untuk menampilkan ayat dan pasal Alkitab.
 
 ### Passage and Chapter
 
-Untuk membaca bagian ayat Alkitab gunakan **passage/{passage}/{chapter}** dengan mengirim nama Ayat dan nomor bagian.
+Untuk menampilkan kitab dan pasal Alkitab gunakan **passage/{passage}/{chapter}** dengan mengirim *request* nama kitab dan nomor pasal.
 
 #### Base URL
 
 Version | URL
 -- | --
-v1 | https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}
-v2 | https://api-alkitab.herokuapp.com/v2/passage/{passage}/{chapter}
+v2 | [https://api-alkitab.herokuapp.com/v2/passage/{**chapter**}/{**chapter**}?ver={**ver**}](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1?ver=tb)
+v1 | [https://api-alkitab.herokuapp.com/v1/passage/{**chapter**}/{**chapter**}](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1)
 
-Variable | Keterangan | Tipe data
--- | -- | --
-passage | Rentang ayat yang ingin ditampilkan. Menerima berbagai format dalam bahasa Indonesian dan Inggris (Yohanes, Yoh, John, dll). | `string`
-chapter | Adalah nomor pasal/bab yang ingin ditampilkan dari bagian Alkitab | `int`
+Variabel | Keterangan | Tipe data | *Required*
+-- | -- | -- | --
+**passage** | Adalah kitab yang ingin ditampilkan. Menerima berbagai format dalam bahasa Indonesian dan Inggris (Yohanes, Yoh, John, dll). | `string` | Yes
+**chapter** | Adalah nomor pasal yang ingin ditampilkan dari bagian Alkitab | `int` | Yes
+**ver** | Adalah versi pilihan bahasa **tb** (terjemahan baru) *default*, **bis** (bahasa Indonesia sehari-hari), **net** (bahasa Inggris) | `string` | No
 
 #### Example
 
 Version | Method | URL
 -- | -- | --
+v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1?ver=tb](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1?ver=tb)
 v1 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1)
-v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1)
 
 #### Response v2
 
@@ -48,11 +58,7 @@ v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1](https://api-alki
         {
             "verse": 2,
             "content": "Ia pada mulanya bersama-sama dengan Allah."
-        },
-        {
-            "verse": 3,
-            "content": "Segala sesuatu dijadikan oleh Dia dan tanpa Dia tidak ada suatupun yang telah jadi dari segala yang telah dijadikan."
-        },
+        }
     ]
 }
 ```
@@ -92,27 +98,28 @@ v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1](https://api-alki
 
 ### Passage, Chapter, and Verse
 
-Untuk membaca satu ayat Alkitab gunakan **passage/{passage}/{chapter}/{verse}** dengan mengirim nama Pasal dan nomor bagian dan ayat.
+Untuk membaca satu ayat Alkitab gunakan **passage/{passage}/{chapter}/{verse}** dengan mengirim nama kitab, nomor pasal dan nomor ayat Alkitab.
 
 #### Base URL
 
 Version | URL
 -- | --
-v1 | https://api-alkitab.herokuapp.com/v1/passage/{passage}/{chapter}/{verse}
-v2 | https://api-alkitab.herokuapp.com/v2/passage/{passage}/{chapter}/{verse}
+v2 | [https://api-alkitab.herokuapp.com/v2/passage/{**passage**}/{**chapter**}/{**verse**}?ver={**tb**}](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1?ver=tb)
+v1 | [https://api-alkitab.herokuapp.com/v1/passage/{**passage**}/{**chapter**}/{**verse**}](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1)
 
-Variable | Keterangan | Tipe data
--- | -- | --
-passage | Rentang ayat yang ingin ditampilkan. Menerima berbagai format dalam bahasa Indonesian dan Inggris (Yohanes, Yoh, John, dll). | `string`
-chapter | Adalah nomor pasal/bab yang ingin ditampilkan dari bagian Alkitab | `int`
-verse | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int`
+Variabel | Keterangan | Tipe data | *Required*
+-- | -- | -- | --
+**passage** | Adalah kitab yang ingin ditampilkan. Menerima berbagai format dalam bahasa Indonesian dan Inggris (Yohanes, Yoh, John, dll). | `string` | Yes
+**chapter** | Adalah nomor pasal yang ingin ditampilkan dari bagian Alkitab | `int` | Yes
+**verse** | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int` | Yes
+**ver** | Adalah versi pilihan bahasa **tb** (terjemahan baru) *default*, **bis** (bahasa Indonesia sehari-hari), **net** (bahasa Inggris) | `string` | No
 
 #### Example
 
 Version | Method | URL
 -- | -- | --
+v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1?ver=tb](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1?ver=tb)
 v1 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1)
-v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1)
 
 #### Response v2
 
@@ -163,7 +170,7 @@ v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1](https://api-al
 
 API mengembalikan beberapa status code sebagai berikut:
 
-Status Code | Description
+Status Code | Keterangan
 -- | --
 200 | OK
 201 | CREATED
@@ -174,6 +181,32 @@ Status Code | Description
 ### Author
 
 API Alkitab Indonesia ini dibuat oleh **Erwindo Sianipar**. Untuk pertanyaan kritik dan saran, silahkan *drop* email ke [erwindosianipar@gmail.com](mailto:erwindosianipar@gmail.com).
+
+### License
+
+API Alkitab Indonesia released under the [MIT License](http://opensource.org/licenses/MIT).
+
+```text
+Copyright (c) 2020 Erwindo Sianipar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 ---
 

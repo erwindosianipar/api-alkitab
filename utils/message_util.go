@@ -1,5 +1,6 @@
 package utils
 
+// Utils message use to reduce hardcoded text in code
 const (
 	ErrorSomethingWentWrong = "Error something went wrong"
 	ErrorCallAPI            = "Error to call API"

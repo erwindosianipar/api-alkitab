@@ -10,10 +10,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// PassageHandler use to implement passage service
 type PassageHandler struct {
 	passageService passage.PassageService
 }
 
+// SetupHandler exported to initialize passage handler
 func SetupHandler(r *mux.Router, passageService passage.PassageService) {
 	passageHandler := PassageHandler{passageService}
 
@@ -95,10 +97,10 @@ func (h *PassageHandler) passageChapterV2(w http.ResponseWriter, r *http.Request
 
 		utils.ResponseData(w, http.StatusOK, response)
 		return
-	} else {
-		utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
-		return
 	}
+
+	utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
+	return
 }
 
 func (h *PassageHandler) passageChapterVerseV2(w http.ResponseWriter, r *http.Request) {
@@ -126,8 +128,8 @@ func (h *PassageHandler) passageChapterVerseV2(w http.ResponseWriter, r *http.Re
 
 		utils.ResponseData(w, http.StatusOK, response)
 		return
-	} else {
-		utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
-		return
 	}
+
+	utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
+	return
 }

@@ -2,6 +2,7 @@ package passage
 
 import "api-alkitab/passage/models"
 
+// PassageService is interface to implemented service
 type PassageService interface {
 	PassageChapter(passage string, chapter int) (map[string]interface{}, error)
 	PassageChapterVerse(passage string, chapter int, verse int) (map[string]interface{}, error)

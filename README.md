@@ -112,7 +112,7 @@ verse | Adalah nomor ayat dari bagian pasal/bab yang ingin ditampilkan | `int`
 Version | Method | URL
 -- | -- | --
 v1 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1)
-v2 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1)
+v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1](https://api-alkitab.herokuapp.com/v2/passage/Yoh/1/1)
 
 #### Response v2
 

@@ -1,0 +1,9 @@
+language: go
+
+go:
+ - 1.14.3
+ - release
+ - tip
+
+script:
+ - go test passage/handler/passage_test.go -v

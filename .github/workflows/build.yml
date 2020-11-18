@@ -22,3 +22,9 @@ jobs:
         run: go test passage/handler/passage_test.go -v
       - name: Build Main Application
         run: go build main.go
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: erwindosianipar/api-alkitab
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}

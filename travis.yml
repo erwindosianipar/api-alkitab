@@ -5,8 +5,5 @@ go:
   - release
   - tip
 
-script:
-  - go test passage/handler/passage_test.go -v
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)

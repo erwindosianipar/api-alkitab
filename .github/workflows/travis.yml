@@ -1,9 +1,12 @@
 language: go
 
 go:
- - 1.14.3
- - release
- - tip
+  - 1.14.3
+  - release
+  - tip
 
 script:
- - go test passage/handler/passage_test.go -v
+  - go test passage/handler/passage_test.go -v
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

@@ -1,27 +1,27 @@
-name: Build Application
+name: Workflows Build Application
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Set up Go 1.14.3
+      - name: Setup Go 1.14.3
         uses: actions/setup-go@v2
         with:
           go-version: 1.14.3
         id: go
 
-      - name: Run Unit Test
+      - name: Perform Unit Testing
         run: go test passage/handler/passage_test.go -v
 
-      - name: Build Main Application
-        run: go build main.go
+      - name: Build main application
+        run: go build .

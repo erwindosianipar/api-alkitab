@@ -8,6 +8,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/erwindosianipar/api-alkitab)
 ![GitHub last commit](https://img.shields.io/github/last-commit/erwindosianipar/api-alkitab)
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m786403864-a6328db4aa0b4270dadbe851)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab?ref=badge_shield)
 
 ## Demo: [https://api-alkitab.herokuapp.com](https://api-alkitab.herokuapp.com)
 
@@ -211,3 +212,6 @@ SOFTWARE.
 ---
 
 > Kemuliaan bagi Tuhan saja - Soli Deo Gloria
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab?ref=badge_large)

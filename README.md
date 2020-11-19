@@ -1,6 +1,8 @@
 # API Alkitab Indonesia
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/erwindosianipar/api-alkitab/Build%20Application)
+![Travis (.com)](https://img.shields.io/travis/com/erwindosianipar/api-alkitab)
+[![codecov](https://codecov.io/gh/erwindosianipar/api-alkitab/branch/master/graph/badge.svg?token=N04FFE5MUG)](https://codecov.io/gh/erwindosianipar/api-alkitab)
 ![Github Heroku deployed](https://heroku-badge.herokuapp.com/?app=api-alkitab&style=flat&svg=1)
 ![GitHub](https://img.shields.io/github/license/erwindosianipar/api-alkitab)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/erwindosianipar/api-alkitab)

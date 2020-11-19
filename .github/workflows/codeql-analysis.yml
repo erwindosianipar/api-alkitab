@@ -1,8 +1,8 @@
-name: CodeQL
+name: Workflows CodeQL Analysis
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
   schedule:
@@ -11,22 +11,20 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
-      matrix:
-        language: ['go']
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Initialize CodeQL
+    - name: Initialize CodeQL Action
       uses: github/codeql-action/init@v1
       with:
-        languages: ${{ matrix.language }}
+        languages: go
 
-    - name: Autobuild
+    - name: Autobuild CodeQL Action
       uses: github/codeql-action/autobuild@v1
 
     - name: Perform CodeQL Analysis

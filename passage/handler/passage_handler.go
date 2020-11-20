@@ -23,15 +23,15 @@ func SetupHandler(r *mux.Router, passageService passage.PassageService) {
 
 	var v1 = r.PathPrefix("/v1").Subrouter()
 
-	v1.HandleFunc("/passage/{passage}/{chapter}", passageHandler.passageChapter).Methods(http.MethodGet)
-	v1.HandleFunc("/passage/{passage}/{chapter}/{verse}", passageHandler.passageChapterVerse).Methods(http.MethodGet)
+	v1.HandleFunc("/passage/{passage}/{chapter}", utils.HandleCORS(passageHandler.passageChapter)).Methods(http.MethodGet)
+	v1.HandleFunc("/passage/{passage}/{chapter}/{verse}", utils.HandleCORS(passageHandler.passageChapterVerse)).Methods(http.MethodGet)
 
 	// MARK: - V2
 
 	var v2 = r.PathPrefix("/v2").Subrouter()
 
-	v2.HandleFunc("/passage/{passage}/{chapter}", passageHandler.passageChapterV2).Methods(http.MethodGet)
-	v2.HandleFunc("/passage/{passage}/{chapter}/{verse}", passageHandler.passageChapterVerseV2).Methods(http.MethodGet)
+	v2.HandleFunc("/passage/{passage}/{chapter}", utils.HandleCORS(passageHandler.passageChapterV2)).Methods(http.MethodGet)
+	v2.HandleFunc("/passage/{passage}/{chapter}/{verse}", utils.HandleCORS(passageHandler.passageChapterVerseV2)).Methods(http.MethodGet)
 }
 
 func (h *PassageHandler) passageChapter(w http.ResponseWriter, r *http.Request) {

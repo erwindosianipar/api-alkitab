@@ -3,5 +3,8 @@
         "passage" : "http://alkitab.sabda.org/api/passage.php",
         "chapter" : "http://alkitab.sabda.org/api/chapter.php",
         "verse" : "http://alkitab.sabda.org/api/verse.php"
+    },
+    "file": {
+        "list_passage_csv": "./list/repository/list_passage.csv"
     }
 }

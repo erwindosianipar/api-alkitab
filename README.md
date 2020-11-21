@@ -3,7 +3,6 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/erwindosianipar/api-alkitab/Build%20Application)
 ![Travis (.com)](https://img.shields.io/travis/com/erwindosianipar/api-alkitab)
 [![codecov](https://codecov.io/gh/erwindosianipar/api-alkitab/branch/master/graph/badge.svg?token=N04FFE5MUG)](https://codecov.io/gh/erwindosianipar/api-alkitab)
-![Github Heroku deployed](https://heroku-badge.herokuapp.com/?app=api-alkitab&style=flat&svg=1)
 ![GitHub](https://img.shields.io/github/license/erwindosianipar/api-alkitab)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/erwindosianipar/api-alkitab)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/erwindosianipar/api-alkitab)
@@ -20,7 +19,44 @@ API Alkitab Indonesia adalah sebuah *third-party backend* Alkitab yang sumber ba
 
 ## Dokumentasi
 
-Versi saat (**v2.0.0**) masih mempunyai dua fitur utama untuk menampilkan ayat dan pasal Alkitab.
+Versi saat (**v2.2.0**) telah memiliki tiga fitur utama untuk menampilkan list pasal, ayat, dan pasal Alkitab.
+
+### Passage List
+
+Untuk menampilkan passage list perjanjian lama dan baru
+
+#### Base URL
+
+Version | URL
+-- | --
+v2 | [https://api-alkitab.herokuapp.com/v2/passage/list](https://api-alkitab.herokuapp.com/v2/passage/list)
+
+#### Example
+
+Version | Method | URL
+-- | -- | --
+v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/list](https://api-alkitab.herokuapp.com/v2/passage/list)
+
+#### Response
+
+```json
+{
+    "passage_list": [
+        {
+            "book_number": 1,
+            "abbreviation": "Kej",
+            "passage": "Kejadian",
+            "total_verse": 50
+        },
+        {
+            "book_number": 2,
+            "abbreviation": "Kel",
+            "passage": "Keluaran",
+            "total_verse": 40
+        }
+    ]
+}
+```
 
 ### Passage and Chapter
 

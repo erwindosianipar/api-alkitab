@@ -11,6 +11,10 @@ import (
 	passageRepository "api-alkitab/passage/repository"
 	passageService "api-alkitab/passage/service"
 
+	listHandler "api-alkitab/list/handler"
+	listRepository "api-alkitab/list/repository"
+	listService "api-alkitab/list/service"
+
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -47,6 +51,11 @@ func main() {
 	passageRepository := passageRepository.CreatePassageRepository(passageBaseURL)
 	passageService := passageService.CreatePassageService(passageRepository)
 	passageHandler.SetupHandler(router, passageService)
+
+	listCSVFile := viper.GetString("file.list_passage_csv")
+	listRepository := listRepository.CreateListRepository(listCSVFile)
+	listService := listService.CreateListService(listRepository)
+	listHandler.SetupHandler(router, listService)
 
 	logrus.Info("Starting web server at ", port)
 	logrus.Fatal(http.ListenAndServe(port, router))

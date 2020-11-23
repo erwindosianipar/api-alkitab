@@ -4,6 +4,6 @@ package models
 type PassageList struct {
 	BookNumber   int    `json:"book_number"`
 	Abbreviation string `json:"abbreviation"`
-	Passage      string `json:"passage"`
-	TotalVerse   int    `json:"total_verse"`
+	BookName     string `json:"book_name"`
+	TotalChapter int    `json:"total_chapter"`
 }

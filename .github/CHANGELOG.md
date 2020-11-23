@@ -2,6 +2,12 @@
 
 API Alkitab Indonesia masih dalam tahap pengembangan dan akan selalu dikembangkan untuk memperbaiki sistem API ini sendiri, berikut adalah beberapa perubahan fitur dan perbaikan-perbaikan yang dilakukan selama pengembangan API ini
 
+## [v2.2.1](https://github.com/erwindosianipar/api-alkitab/releases/tag/v2.2.1) (23 November 2020)
+
+### Bug Fixed (patch)
+
+- Change wrong field name response
+
 ## [v2.2.0](https://github.com/erwindosianipar/api-alkitab/releases/tag/v2.2.0) (21 November 2020)
 
 ### Feature

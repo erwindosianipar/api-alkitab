@@ -37,15 +37,15 @@ func (u *ListRepositoryImpl) ListPassage() (*[]models.PassageList, error) {
 
 		passage.BookNumber = bookNumber
 		passage.Abbreviation = record[1]
-		passage.Passage = record[2]
+		passage.BookName = record[2]
 
-		totalVerse, err := strconv.Atoi(record[3])
+		totalChapter, err := strconv.Atoi(record[3])
 		if err != nil {
 			logrus.Info("[repository][list][ListPassage]", err)
 			return nil, errors.New(utils.ErrorSomethingWentWrong)
 		}
 
-		passage.TotalVerse = totalVerse
+		passage.TotalChapter = totalChapter
 
 		listPassage = append(listPassage, passage)
 	}

@@ -19,7 +19,7 @@ API Alkitab Indonesia adalah sebuah *third-party backend* Alkitab yang sumber ba
 
 ## Dokumentasi
 
-Versi saat (**v2.2.0**) telah memiliki tiga fitur utama untuk menampilkan list pasal, ayat, dan pasal Alkitab.
+Versi saat (**v2.2.1**) telah memiliki tiga fitur utama untuk menampilkan list pasal, ayat, dan pasal Alkitab.
 
 ### Passage List
 
@@ -45,14 +45,14 @@ v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/list](https://api-alkit
         {
             "book_number": 1,
             "abbreviation": "Kej",
-            "passage": "Kejadian",
-            "total_verse": 50
+            "book_name": "Kejadian",
+            "total_chapter": 50
         },
         {
             "book_number": 2,
             "abbreviation": "Kel",
-            "passage": "Keluaran",
-            "total_verse": 40
+            "book_name": "Keluaran",
+            "total_chapter": 40
         }
     ]
 }

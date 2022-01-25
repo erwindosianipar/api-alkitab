@@ -23,3 +23,10 @@ jobs:
 
       - name: Docker Push Registry
         run: docker push erwindosianipar/api-alkitab
+
+      - name: Notify To Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: Docker image has been uploaded to docker hub

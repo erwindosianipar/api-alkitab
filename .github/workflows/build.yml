@@ -1,8 +1,6 @@
 name: Workflows Build Application
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -20,8 +18,11 @@ jobs:
           go-version: 1.14.3
         id: go
 
+      - name: Perform Dependencies
+        run: make dep
+
       - name: Perform Unit Testing
-        run: go test passage/handler/passage_test.go -v
+        run: make test
 
       - name: Build main application
         run: go build .

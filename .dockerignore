@@ -1,0 +1,13 @@
+# Ignore git
+.git
+.gitignore
+
+# Ignore pipeline
+.travis.yml
+.github/
+
+# Ignore license
+LICENSE
+
+# Ignore docs
+README.md

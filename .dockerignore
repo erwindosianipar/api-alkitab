@@ -3,7 +3,6 @@
 .gitignore
 
 # Ignore pipeline
-.travis.yml
 .github/
 
 # Ignore license

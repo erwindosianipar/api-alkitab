@@ -1,0 +1,12 @@
+# Ignore git
+.git
+.gitignore
+
+# Ignore pipeline
+.github/
+
+# Ignore license
+LICENSE
+
+# Ignore docs
+README.md

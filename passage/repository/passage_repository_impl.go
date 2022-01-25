@@ -26,7 +26,6 @@ func (u *PassageRepositoryImpl) PassageChapter(passage string, chapter int) (*mo
 	params := fmt.Sprintf("?passage=%s+%v", passage, chapter)
 
 	resp, err := http.Get(u.baseURL + params)
-	logrus.Info(resp.Request.URL.String())
 	if err != nil {
 		logrus.Error("[repository][Passage][Get]", err)
 		return nil, errors.New(utils.ErrorCallAPI)
@@ -59,7 +58,6 @@ func (u *PassageRepositoryImpl) PassageChapterVerse(passage string, chapter int,
 	params := fmt.Sprintf("?passage=%s+%v:%v", passage, chapter, verse)
 
 	resp, err := http.Get(u.baseURL + params)
-	logrus.Info(resp.Request.URL.String())
 	if err != nil {
 		logrus.Error("[repository][PassageChapterVerse][Get]", err)
 		return nil, errors.New(utils.ErrorCallAPI)
@@ -95,7 +93,6 @@ func (u *PassageRepositoryImpl) PassageChapterV2(passage string, chapter int, ve
 	}
 
 	resp, err := http.Get(u.baseURL + params)
-	logrus.Info(resp.Request.URL.String())
 	if err != nil {
 		logrus.Error("[repository][PassageChapterV2][Get]", err)
 		return nil, errors.New(utils.ErrorCallAPI)
@@ -131,7 +128,6 @@ func (u *PassageRepositoryImpl) PassageChapterVerseV2(passage string, chapter in
 	}
 
 	resp, err := http.Get(u.baseURL + params)
-	logrus.Info(resp.Request.URL.String())
 	if err != nil {
 		logrus.Error("[repository][PassageChapterVerseV2][Get]", err)
 		return nil, errors.New(utils.ErrorCallAPI)

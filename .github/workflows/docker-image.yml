@@ -2,7 +2,7 @@ name: Workflows Docker Image
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -18,11 +18,19 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-      - name: Build Docker Image
-        run: docker build . --file Dockerfile --tag erwindosianipar/api-alkitab:$(date +%s)
+      - name: docker metadata
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: erwindosianipar/api-alkitab
 
-      - name: Docker Push Registry
-        run: docker push erwindosianipar/api-alkitab
+      - name: docker build push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Notify To Telegram
         uses: appleboy/telegram-action@master

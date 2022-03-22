@@ -32,6 +32,12 @@ func SetupHandler(r *mux.Router, passageService passage.PassageService) {
 
 	v2.HandleFunc("/passage/{passage}/{chapter}", utils.HandleCORS(passageHandler.passageChapterV2)).Methods(http.MethodGet)
 	v2.HandleFunc("/passage/{passage}/{chapter}/{verse}", utils.HandleCORS(passageHandler.passageChapterVerseV2)).Methods(http.MethodGet)
+
+	// MARK: - V3
+
+	var v3 = r.PathPrefix("/v3").Subrouter()
+
+	v3.HandleFunc("/passage/{passage}/{chapter}", utils.HandleCORS(passageHandler.passageChapterV3)).Methods(http.MethodGet)
 }
 
 func (h *PassageHandler) passageChapter(w http.ResponseWriter, r *http.Request) {
@@ -50,7 +56,6 @@ func (h *PassageHandler) passageChapter(w http.ResponseWriter, r *http.Request) 
 	}
 
 	utils.ResponseMessage(w, http.StatusOK, response)
-	return
 }
 
 func (h *PassageHandler) passageChapterVerse(w http.ResponseWriter, r *http.Request) {
@@ -75,7 +80,6 @@ func (h *PassageHandler) passageChapterVerse(w http.ResponseWriter, r *http.Requ
 	}
 
 	utils.ResponseMessage(w, http.StatusOK, response)
-	return
 }
 
 func (h *PassageHandler) passageChapterV2(w http.ResponseWriter, r *http.Request) {
@@ -100,7 +104,6 @@ func (h *PassageHandler) passageChapterV2(w http.ResponseWriter, r *http.Request
 	}
 
 	utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
-	return
 }
 
 func (h *PassageHandler) passageChapterVerseV2(w http.ResponseWriter, r *http.Request) {
@@ -131,5 +134,28 @@ func (h *PassageHandler) passageChapterVerseV2(w http.ResponseWriter, r *http.Re
 	}
 
 	utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
-	return
+}
+
+func (h *PassageHandler) passageChapterV3(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	ver := r.URL.Query().Get("ver")
+
+	if ver == "" || ver == "tb" || ver == "bis" || ver == "net" {
+		chapter, err := strconv.Atoi(params["chapter"])
+		if err != nil {
+			utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ChapterMustValid))
+			return
+		}
+
+		response, err := h.passageService.PassageChapterV3(params["passage"], chapter, ver)
+		if err != nil {
+			utils.ResponseMessage(w, http.StatusInternalServerError, utils.Message(http.StatusInternalServerError, err.Error()))
+			return
+		}
+
+		utils.ResponseData(w, http.StatusOK, response)
+		return
+	}
+
+	utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ErrorVersionType))
 }

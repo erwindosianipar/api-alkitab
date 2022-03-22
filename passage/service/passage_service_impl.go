@@ -59,6 +59,16 @@ func (u *PassageService) PassageChapterVerseV2(passage string, chapter int, vers
 	return response, nil
 }
 
+// PassageChapterV3 exported to get data from passage and chapter v3 repository
+func (u *PassageService) PassageChapterV3(passage string, chapter int, ver string) (*models.PassageV3, error) {
+	response, err := u.passageRepository.PassageChapterV3(passage, chapter, ver)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
 // CreatePassageService exported to initialize service passage service
 func CreatePassageService(passageRepository passage.PassageRepository) passage.PassageService {
 	return &PassageService{passageRepository}

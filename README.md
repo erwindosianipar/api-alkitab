@@ -11,25 +11,60 @@
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m786403864-a6328db4aa0b4270dadbe851)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab?ref=badge_shield)
 
-## Demo: [https://api-alkitab.herokuapp.com](https://api-alkitab.herokuapp.com)
+## 🚧🚧 KODE SUMBER INI TIDAK DIKEMBANGKAN LAGI 🚧🚧
+
+Versi tetap dari kode sumber ini adalah V3 dan kode sumber ini tidak akan dikembangkan lagi namun **masih dapat digunakan**. Untuk kode sumber yang masih dilanjutkan pengembangannya dipindahkan ke [Repository Biblika](https://github.com/biblika/biblika-api) yang lebih cepat karena menggunakan gRPC dan *response* lebih sederhana.
+
+## [https://api-alkitab.herokuapp.com](https://api-alkitab.herokuapp.com)
 
 API Alkitab Indonesia adalah sebuah *third-party backend* Alkitab yang sumber bacaannya berasal dari [sabda.org](https://sabda.org).
 
-[sabda.org](https://sabda.org) adalah sebuah Yayasan Kristen non-profit dan non-komersial yang bergerak dalam bidang pelayanan media komputer dan internet di Indonesia.
+[sabda.org](https://sabda.org) adalah sebuah Yayasan Kristen non-profit dan non-komersial yang bergerak dalam bidang pelayanan media komputer dan Internet di Indonesia.
 
 ## Dokumentasi
 
-Versi saat (**v2.2.1**) telah memiliki tiga fitur utama untuk menampilkan list pasal, ayat, dan pasal Alkitab.
+Versi saat (**v3.0.0**) telah memiliki tiga fitur utama untuk menampilkan list pasal, ayat dengan judul, dan pasal Alkitab.
 
-### Passage List
-
-Untuk menampilkan passage list perjanjian lama dan baru
+### Passage Content V3
 
 #### Base URL
 
 Version | URL
 -- | --
-v2 | [https://api-alkitab.herokuapp.com/v2/passage/list](https://api-alkitab.herokuapp.com/v2/passage/list)
+v3 | [https://api-alkitab.herokuapp.com/v3/passage/Yoh/1?ver=tb](https://api-alkitab.herokuapp.com/v3/passage/Yoh/1?ver=tb)
+
+#### Example
+
+Version | Method | URL
+-- | -- | --
+v3 | GET | [https://api-alkitab.herokuapp.com/v3/passage/{**chapter**}/{**chapter**}?ver={**ver**}](https://api-alkitab.herokuapp.com/v3/passage/Yoh/1?ver=tb)
+
+#### Response
+
+``` bash
+{
+    "title": "Yohanes 1:1-51",
+    "book_number": 43,
+    "chapter": 1,
+    "verses": [
+        {
+            "verse": 0,
+            "type": "title",
+            "content": "Firman yang telah menjadi manusia"
+        },
+        {
+            "verse": 1,
+            "type": "text",
+            "content": "Pada mulanya adalah Firman; Firman itu bersama-sama dengan Allah dan Firman itu adalah Allah."
+        },
+        ....
+    ]
+}
+```
+
+### Passage List
+
+Untuk menampilkan passage list perjanjian lama dan baru
 
 #### Example
 
@@ -53,7 +88,8 @@ v2 | GET | [https://api-alkitab.herokuapp.com/v2/passage/list](https://api-alkit
             "abbreviation": "Kel",
             "book_name": "Keluaran",
             "total_chapter": 40
-        }
+        },
+        ...
     ]
 }
 ```
@@ -97,7 +133,8 @@ v1 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alki
         {
             "verse": 2,
             "content": "Ia pada mulanya bersama-sama dengan Allah."
-        }
+        },
+        ...
     ]
 }
 ```
@@ -124,7 +161,8 @@ v1 | GET | [https://api-alkitab.herokuapp.com/v1/passage/Yoh/1](https://api-alki
                             {
                                 "number": 2,
                                 "text": "Ia pada mulanya bersama-sama dengan Allah."
-                            }
+                            },
+                            ...
                         ]
                     }
                 }

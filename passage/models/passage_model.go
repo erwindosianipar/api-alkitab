@@ -43,3 +43,16 @@ type PassageV2 struct {
 	Chapter int       `xml:"book>chapter>chap" json:"chapter"`
 	Verses  []VerseV2 `xml:"book>chapter>verses>verse" json:"verses"`
 }
+
+type VerseV3 struct {
+	Number int    `xml:"number" json:"verse"`
+	Title  string `xml:"title" json:"type"`
+	Text   string `xml:"text" json:"content"`
+}
+
+type PassageV3 struct {
+	Title   string    `xml:"title" json:"title"`
+	BookID  int       `xml:"book>book_id" json:"book_number"`
+	Chapter int       `xml:"book>chapter>chap" json:"chapter"`
+	Verses  []VerseV3 `xml:"book>chapter>verses>verse" json:"verses"`
+}

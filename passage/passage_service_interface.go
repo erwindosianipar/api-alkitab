@@ -9,4 +9,6 @@ type PassageService interface {
 
 	PassageChapterV2(passage string, chapter int, ver string) (*models.PassageV2, error)
 	PassageChapterVerseV2(passage string, chapter int, verse int, ver string) (*models.PassageV2, error)
+
+	PassageChapterV3(passage string, chapter int, ver string) (*models.PassageV3, error)
 }

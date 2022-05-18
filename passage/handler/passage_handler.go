@@ -140,7 +140,7 @@ func (h *PassageHandler) passageChapterV3(w http.ResponseWriter, r *http.Request
 	params := mux.Vars(r)
 	ver := r.URL.Query().Get("ver")
 
-	if ver == "" || ver == "tb" || ver == "bis" || ver == "net" {
+	if ver == "" || ver == "tb" || ver == "bis" || ver == "net" || ver == "toba" || ver == "karo" {
 		chapter, err := strconv.Atoi(params["chapter"])
 		if err != nil {
 			utils.ResponseMessage(w, http.StatusBadRequest, utils.Message(http.StatusBadRequest, utils.ChapterMustValid))

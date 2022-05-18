@@ -8,4 +8,4 @@ test:
 	go test --cover ./...
 
 build:
-	go build -o /bin/api-alkitab .
+	go build -o bin/

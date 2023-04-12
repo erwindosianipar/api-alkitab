@@ -1,4 +1,8 @@
-# API Alkitab Indonesia
+# ⚠️ THIS CODE IS NOT MAINTAINED AGAIN ⚠️
+## Please rever into new Bible app reader
+## https://github.com/erwindosianipar/beeble
+
+## API Alkitab Indonesia
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/erwindosianipar/api-alkitab/Build%20Application)
 ![Travis (.com)](https://img.shields.io/travis/com/erwindosianipar/api-alkitab)
@@ -10,12 +14,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/erwindosianipar/api-alkitab)
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m786403864-a6328db4aa0b4270dadbe851)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ferwindosianipar%2Fapi-alkitab?ref=badge_shield)
-
-## 🚧🚧 KODE SUMBER INI TIDAK DIKEMBANGKAN LAGI 🚧🚧
-
-Versi tetap dari kode sumber ini adalah V3 dan kode sumber ini tidak akan dikembangkan lagi namun **masih dapat digunakan**. Untuk kode sumber yang masih dilanjutkan pengembangannya dipindahkan ke [Repository Biblika](https://github.com/biblika/biblika-api) yang lebih cepat karena menggunakan gRPC dan *response* lebih sederhana.
-
-## [https://api-alkitab.herokuapp.com](https://api-alkitab.herokuapp.com)
 
 API Alkitab Indonesia adalah sebuah *third-party backend* Alkitab yang sumber bacaannya berasal dari [sabda.org](https://sabda.org).
 
